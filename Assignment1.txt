@@ -1,0 +1,41 @@
+-- 1.
+DROP TABLE Booking;
+DROP TABLE Guest;
+DROP TABLE Room;
+DROP TABLE Hotel;
+
+-- 2.
+CREATE TABLE Hotel
+(hotelNo CHAR() NOT NULL
+, hotelName VARCHAR() NOT NULL
+, city VARCHAR() NOT NULL
+, PRIMARY KEY (hotelNo)
+);
+
+CREATE TABLE Room
+(roomNo INTEGER()
+   CONSTRAINT roomNo_chk
+     CHECK (roomNo BETWEEN 1 AND 100)
+, hotelNo CHAR() NOT NULL
+, type VARCHAR()
+    CONSTRAINT type_chk
+      CHECK (type IN ('single', 'double', 'family'))
+, price DECIMAL(5, 2)
+    CONSTRAINT price_chk
+       CHECK (price BETWEEN 10.00 AND 100.00)
+);
+
+-- 3.
+CREATE TABLE Guest
+(guestNo CHAR() NOT NULL
+, guestName VARCHAR() NOT NULL
+, guestAddress VARCHAR() NOT NULL
+, PRIMARY KEY (guestNo)
+, FOREIGN KEY (guestNo)
+);
+
+CREATE TABLE Booking
+(
+
+);
+--
